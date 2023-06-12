@@ -63,7 +63,6 @@ function Board({ xIsNext, squares, onPlay }) {
 }
 
 export default function Game() {
-  const [xIsNext, setXIsNext] = useState(true);
   // create array with 9 element and set each to null => square is array
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
@@ -71,6 +70,8 @@ export default function Game() {
   // const currentSquares = history[history.length - 1];
   // render the currently selected move
   const currentSquares = history[currentMove];
+  // link xIsNext with currentMove
+  const xIsNext = currentMove % 2 === 0;
 
   function handlePlay(nextSquares) {
     // pushing nextsquare to history array
@@ -79,13 +80,10 @@ export default function Game() {
     setHistory(nextHistory);
     // reset the currentMove when go back history
     setCurrentMove(nextHistory.length - 1);
-    setXIsNext(!xIsNext);
   }
 
   function jumpTo(nextMove) {
     setCurrentMove(nextMove);
-    // set xIsNext is true if move is even
-    setXIsNext(nextMove % 2 === 0);
   }
 
   // history.map((element, index)
