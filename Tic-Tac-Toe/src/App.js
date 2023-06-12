@@ -2,7 +2,7 @@ const { useState } = require("react");
 
 function Square({ value, onSquareClick }) {
   return (
-    // when click, button WILL HAS onSquareClick from onClick  
+    // when click, button WILL HAS onSquareClick from onClick
     // => THEN onSquareClick WILL BE SENT TO Square under parent component
     // => THEN Square will SET VALUE AND ACTIVATE handleClick() FUNCTION
     // => the board will then re-render the board (including nextplayer and winner)
@@ -12,19 +12,7 @@ function Square({ value, onSquareClick }) {
   );
 }
 
-export default function Board() {
-  // create array with 9 element and set each to null => square is array
-  const [squares, setSquares] = useState(Array(9).fill(null));
-  const [xIsNext, setXIsNext] = useState(true);
-
-  const winner = calculateWinner(squares);
-  let status;
-  if (winner) {
-    status = "Winner: " + winner;
-  } else {
-    status = "Next Player: " + (xIsNext? "X": "O");
-  }
-
+function Board({ xIsNext, squares, onPlay }) {
   // set the first click as "X" turn
   function handleClick(i) {
     if (squares[i] || calculateWinner(squares)) {
@@ -37,9 +25,17 @@ export default function Board() {
     } else {
       nextSquares[i] = "O";
     }
-    setXIsNext(!xIsNext);
-    // the update function will re-render the components that use squares state (Board) and its child component
-    setSquares(nextSquares);
+    // // the update function will re-render the components that use squares state (Board) and its child component
+    // setSquares(nextSquares);
+    onPlay(nextSquares);
+  }
+
+  const winner = calculateWinner(squares);
+  let status;
+  if (winner) {
+    status = "Winner: " + winner;
+  } else {
+    status = "Next Player: " + (xIsNext ? "X" : "O");
   }
 
   return (
@@ -63,6 +59,60 @@ export default function Board() {
         <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
       </div>
     </>
+  );
+}
+
+export default function Game() {
+  const [xIsNext, setXIsNext] = useState(true);
+  // create array with 9 element and set each to null => square is array
+  const [history, setHistory] = useState([Array(9).fill(null)]);
+  const [currentMove, setCurrentMove] = useState(0);
+  // // always render the last move
+  // const currentSquares = history[history.length - 1];
+  // render the currently selected move
+  const currentSquares = history[currentMove];
+
+  function handlePlay(nextSquares) {
+    // pushing nextsquare to history array
+    // if click on the previous move => effect currentMove's value => reset history
+    const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
+    setHistory(nextHistory);
+    // reset the currentMove when go back history
+    setCurrentMove(nextHistory.length - 1);
+    setXIsNext(!xIsNext);
+  }
+
+  function jumpTo(nextMove) {
+    setCurrentMove(nextMove);
+    // set xIsNext is true if move is even
+    setXIsNext(nextMove % 2 === 0);
+  }
+
+  // history.map((element, index)
+  const moves = history.map((squares, move) => {
+    let description;
+    if (move > 0) {
+      description = "Go to move #" + move;
+    } else {
+      description = "Go to game start";
+    }
+    return (
+      <li key={move}>
+        <button onClick={() => jumpTo(move)}>{description}</button>
+      </li>
+    );
+  });
+
+  return (
+    <div className="game">
+      <div className="game-board">
+        {/* the board will check next player, the symboal, and trigger handlePlay() (set history function) */}
+        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
+      </div>
+      <div className="game-info">
+        <ol>{moves}</ol>
+      </div>
+    </div>
   );
 }
 
