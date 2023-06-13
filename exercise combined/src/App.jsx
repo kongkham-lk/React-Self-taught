@@ -4,7 +4,10 @@ import RandomPokemon from "./RandomPokemon.jsx";
 function App() {
   return (
     <div className="App">
-      <RandomPokemon />
+    {/* RandomPokemon exercise */}
+    <RandomPokemon />
+    {/* Slot Machine exercise */}
+    <Slot />
     </div> 
   );
 }
