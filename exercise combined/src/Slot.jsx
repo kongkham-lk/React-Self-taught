@@ -4,7 +4,7 @@ export default function Slot() {
     const val1 = Math.floor(Math.random() * rand) + 1;
     const val2 = Math.floor(Math.random() * rand) + 1;
     const val3 = Math.floor(Math.random() * rand) + 1;
-    const match = val1 === val2 && val2 === val3 ? true : false;
+    const match = val1 === val2 && val2 === val3;
     const result = match ? "You Win!" : "You Lose!";
     const style = { color: match ? "green" : "red" };
     return (
