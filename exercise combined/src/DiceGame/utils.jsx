@@ -13,5 +13,13 @@ function sum(nums) {
   return nums.reduce((prev, cur) => prev + cur, 0);
 }
 
+function lessThanFour(dice) {
+  return sum(dice) < 4;
+}
+
+function allSameValue(dice) {
+  return dice.every((val) => val === dice[0]);
+}
+
 // when export many function => JUST "export", NO "default"
-export { getRolls, rand, sum };
+export { getRolls, lessThanFour, allSameValue };
