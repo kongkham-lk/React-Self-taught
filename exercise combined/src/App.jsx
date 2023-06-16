@@ -1,8 +1,10 @@
 import './App.css';
-import RandomPokemon from "./RandomPokemon/RandomPokemon.jsx";
-import Slot from "./Slot/Slot.jsx";
-import PropertyList from "./PropertyList/PropertyList.jsx";
-import ColorBoxGrid from "./RandomColorBox/ColorBoxGrid.jsx";
+import RandomPokemon from "./RandomPokemon/RandomPokemon";
+import Slot from "./Slot/Slot";
+import PropertyList from "./PropertyList/PropertyList";
+import ColorBoxGrid from "./RandomColorBox/ColorBoxGrid";
+import ScoreKeeper from "./ScoreKeeper/ScoreKeeper";
+
 
 const properties = [
   { id: 129031, name: "Desert Yurt", rating: 4.9, price: 150 },
@@ -42,7 +44,9 @@ function App() {
       {/* PropertyList exercise */}
       {/* <PropertyList properties={properties} /> */}
       {/* RandomColorBox exercise */}
-      <ColorBoxGrid colors={colors} />
+      {/* <ColorBoxGrid colors={colors} /> */}
+      {/* ScoreKeeper exercise */}
+      <ScoreKeeper numPlayers={8} />
     </div>
   );
 }
