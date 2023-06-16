@@ -4,6 +4,7 @@ import Slot from "./Slot/Slot";
 import PropertyList from "./PropertyList/PropertyList";
 import ColorBoxGrid from "./RandomColorBox/ColorBoxGrid";
 import ScoreKeeper from "./ScoreKeeper/ScoreKeeper";
+import LuckyN from "./DiceGame/LuckyN";
 
 
 const properties = [
@@ -46,7 +47,9 @@ function App() {
       {/* RandomColorBox exercise */}
       {/* <ColorBoxGrid colors={colors} /> */}
       {/* ScoreKeeper exercise */}
-      <ScoreKeeper numPlayers={8} />
+      {/* <ScoreKeeper numPlayers={8} /> */}
+      {/* DiceGame exercise */}
+      <LuckyN />
     </div>
   );
 }
