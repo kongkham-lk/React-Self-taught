@@ -6,6 +6,8 @@ import ColorBoxGrid from "./RandomColorBox/ColorBoxGrid";
 import ScoreKeeper from "./ScoreKeeper/ScoreKeeper";
 import LuckyN from "./DiceGame/LuckyN";
 import { lessThanFour, allSameValue } from "./DiceGame/utils";
+import BoxGrid from "./BoxGrid";
+
 
 
 const properties = [
@@ -50,8 +52,8 @@ function App() {
       {/* ScoreKeeper exercise */}
       {/* <ScoreKeeper numPlayers={8} /> */}
       {/* DiceGame exercise */}
-      <LuckyN winnerCheck={allSameValue} title="All same value" />
-
+      {/* <LuckyN winnerCheck={allSameValue} title="All same value" /> */}
+      <BoxGrid />
     </div>
   );
 }
