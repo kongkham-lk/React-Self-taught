@@ -6,7 +6,7 @@ import ColorBoxGrid from "./RandomColorBox/ColorBoxGrid";
 import ScoreKeeper from "./ScoreKeeper/ScoreKeeper";
 import LuckyN from "./DiceGame/LuckyN";
 import { lessThanFour, allSameValue } from "./DiceGame/utils";
-import BoxGrid from "./BoxGrid";
+import BoxGrid from "./ToggleBoxes/BoxGrid";
 
 
 
