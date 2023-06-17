@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export default function ScoreKeeper({ numPlayers = 3, target = 5 }) {
     const [scores, setScores] = useState(new Array(numPlayers).fill(0));
-    const [foundWinner, setโoundWinner] = useState(false);
+    const [foundWinner, setFoundWinner] = useState(false);
     const incrementScore = (index) => {
         setScores((prevScore) => {
             // const copy = [...prevScore];
@@ -11,7 +11,7 @@ export default function ScoreKeeper({ numPlayers = 3, target = 5 }) {
             return prevScore.map((score, idx) => {
                 if (index === idx && foundWinner !== true) {
                     if (score === target - 1) {
-                        setโoundWinner((winner) => (winner = true));
+                        setFoundWinner((winner) => (winner = true));
                     }
                     return (score += 1);
                 }
@@ -20,7 +20,7 @@ export default function ScoreKeeper({ numPlayers = 3, target = 5 }) {
         });
     };
     const reset = () => {
-        setโoundWinner((resetWinner) => (resetWinner = false));
+        setFoundWinner((resetWinner) => (resetWinner = false));
         setScores(new Array(numPlayers).fill(0));
     };
     return (
