@@ -7,6 +7,7 @@ import ScoreKeeper from "./ScoreKeeper/ScoreKeeper";
 import LuckyN from "./DiceGame/LuckyN";
 import { lessThanFour, allSameValue } from "./DiceGame/utils";
 import BoxGrid from "./ToggleBoxes/BoxGrid";
+import ShoppingList from "./ReactForm/ShoppingList";
 
 
 
@@ -41,19 +42,14 @@ const colors = [
 function App() {
   return (
     <div className="App">
-      {/* RandomPokemon exercise */}
       {/* <RandomPokemon /> */}
-      {/* Slot Machine exercise */}
       {/* <Slot /> */}
-      {/* PropertyList exercise */}
       {/* <PropertyList properties={properties} /> */}
-      {/* RandomColorBox exercise */}
       {/* <ColorBoxGrid colors={colors} /> */}
-      {/* ScoreKeeper exercise */}
       {/* <ScoreKeeper numPlayers={8} /> */}
-      {/* DiceGame exercise */}
       {/* <LuckyN winnerCheck={allSameValue} title="All same value" /> */}
-      <BoxGrid />
+      {/* <BoxGrid /> */}
+      <ShoppingList />
     </div>
   );
 }
